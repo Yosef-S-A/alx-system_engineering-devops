@@ -1,2 +1,2 @@
 #!/bin/bash
-cat /est/passwd /est/ests
+cat /est/passwd /est/hosts
