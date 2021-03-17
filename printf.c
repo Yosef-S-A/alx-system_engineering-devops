@@ -5,119 +5,63 @@
 
 /**
  * _printf - function that duplicates the functionalities of printf
- * @formatstring: string with format specification
+ * @format: string with format specification
  *
  * Return: number of chars printed
  */
-int _printf(const char *formatstring, ...)
+int _printf(const char *format, ...)
 {
 va_list args;
 int length = 0;
 char *printstr;
-char *rot13ed;
-char *printrevstr;
-char *s;
-//char *printaddress;
 char printchar;
-int printInteger;
-unsigned int printHexa;
-unsigned int printUnisgnedInt;
-unsigned int binaryNumber;
-unsigned int octalNumber;
 
-if (formatstring == NULL)
+if (format == NULL)
 return (-1);
+va_start (args, format);
+while (*format)
+{
+if (*format == '%')
 
-va_start(args, formatstring);
-while(*formatstring)
+format++;
+switch (*format)
 {
-if(*formatstring == '%')
-{
-formatstring++;
-switch(*formatstring)
-{
-case 's': 
+case 'c':
+printchr = va_arg(args, int);
+length += print_char(printchar);
+format++;
+break;
+case 's':
 printstr = va_arg(args, char*);
 length += print_str(printstr);
-formatstring++;
+format++;
 break;
-case 'r': 
-printrevstr = va_arg(args, char *);
-length += print_reversed(printrevstr);
-formatstring++;
-break;
-case 'c': 
-printchar = va_arg(args, int);
-length += print_char(printchar);
-formatstring++;
-break;
-case 'i':
-case 'd':  
-printInteger = va_arg(args, int);
-length += print_integer(printInteger);
-formatstring++;
-break;
-case 'u':  
-printUnisgnedInt = va_arg(args, unsigned int);
-length += print_unsigned_int(printUnisgnedInt);
-formatstring++;
-break;
-case 'b':  
-binaryNumber = va_arg(args, unsigned int);
-length += print_binary(binaryNumber);
-formatstring++;
-break;
-case 'o':  
-octalNumber = va_arg(args, unsigned int);
-length += print_octal(octalNumber);
-formatstring++;
-break;
-case 'x':  
-printHexa = va_arg(args, unsigned int);
-length += print_hex(printHexa, 0);
-formatstring++;
-break;
-case 'X':  
-printInteger = va_arg(args, unsigned int);
-length += print_hex(printHexa, 1);
-formatstring++;
-break;
-// case 'p':  
-//                 printaddress = (char*)va_arg(args, void*);
-//                 length += print_p(printaddress);
-//       formatstring++;
-//                 break;
-case 'R': 
-rot13ed = va_arg(args, char*);
-length += print_R(rot13ed);
-formatstring++;
-break;
-case '%': 
-_putchar('%');
-formatstring++;
+case '%':
+_putchar ('%');
+format++;
 length++;
 break;
 case ' ':
-formatstring++;
+format++;
 length++;
 break;
-case '\0': 
+case '\0':
 break;
 default:
-_putchar(*formatstring);
-formatstring++;            
-length +=2;
-}       
+_putchar (*format);
+format++;
+length += 2;
 }
-else
+}
+ else
 {
-_putchar(*formatstring);
-formatstring++;
+putchar (*format);
+format++;
 length++;
 }
 }
 
-va_end(args);
+va_end (args);
 
 return (length);
 }
