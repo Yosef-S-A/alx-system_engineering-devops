@@ -15,6 +15,7 @@ va_list args;
 int length = 0;
 char *printstr;
 char printchar;
+ int printInteger;
 
 if (format == NULL)
 return (-1);
@@ -34,6 +35,12 @@ break;
 case 's':
 printstr = va_arg(args, char*);
 length += print_str(printstr);
+format++;
+break;
+case 'i':
+case 'd':
+printInteger = va_arg(args, int);
+length += print_integer(printInteger);
 format++;
 break;
 case '%':
