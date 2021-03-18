@@ -28,6 +28,37 @@ break;
 case 's':
 length += print_str(va_arg(args, char*));
 break;
+case 'i':
+case 'd':
+length += print_integer(printInteger);
+break;
+case 'b':
+binaryNumber = va_arg(args, unsigned int);
+length += print_binary(binaryNumber);
+break;
+case 'u':
+printUnsignedInt = va_arg(args, unsigned int);
+length += print_unsigned_int (printUnsignedInt);
+break;
+case 'o':
+octalNumber = va_arg(args, unsigned int);
+length += print_octal(octalNumber);
+break;
+case 'x':
+printHexa = va_arg(args, unsigned int);
+length += print_hex(printHexa, 1);
+break;
+case 'X':
+printHexa = va_arg(args, unsigned int);
+length += print_hex(printHexa, 1);
+break;
+ase 'r' :
+printrevstr = va_arg(args, char *);
+break;
+case 'R':
+rot13ed = va_arg(args, char*);
+length += print_R(rot13ed);
+break;
 case '%':
 _putchar('%');
 length++;
