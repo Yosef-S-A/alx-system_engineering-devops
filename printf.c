@@ -15,36 +15,30 @@ va_list args;
 int length = 0;
 char *printstr;
 char printchar;
- int printInteger;
 
 if (format == NULL)
 return (-1);
-va_start (args, format);
-while (*format)
-{
-if (*format == '%')
 
-format++;
-switch (*format)
+va_start(args, format);
+while(*format)
 {
-case 'c':
-printchr = va_arg(args, int);
+if(*format == '%')
+{
+format++;
+switch(*format)
+{
+case 'c': 
+printchar = va_arg(args, int);
 length += print_char(printchar);
 format++;
-break;
-case 's':
+break;              
+case 's': 
 printstr = va_arg(args, char*);
 length += print_str(printstr);
 format++;
 break;
-case 'i':
-case 'd':
-printInteger = va_arg(args, int);
-length += print_integer(printInteger);
-format++;
-break;
-case '%':
-_putchar ('%');
+case '%': 
+_putchar('%');
 format++;
 length++;
 break;
@@ -52,23 +46,23 @@ case ' ':
 format++;
 length++;
 break;
-case '\0':
+case '\0': 
 break;
 default:
-_putchar (*format);
-format++;
-length += 2;
+_putchar(*format);
+format++;            
+length +=2;
+}       
 }
-}
- else
+else
 {
-putchar (*format);
+_putchar(*format);
 format++;
 length++;
 }
 }
 
-va_end (args);
+va_end(args);
 
 return (length);
 }

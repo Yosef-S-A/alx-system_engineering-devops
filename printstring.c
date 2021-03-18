@@ -23,7 +23,7 @@ return (1);
 int print_str(char *s)
 {
 int count;
-
+  
 if (s == NULL)
 s = "";
 for (count = 0; s[count]; count++)
