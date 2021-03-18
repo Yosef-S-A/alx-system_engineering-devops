@@ -4,15 +4,15 @@
 #include "holberton.h"
 
 /**
- * _printf - function that validates conversion specifiers
+ * checkConversionspecifier - function that compares values with
+ * predifiened values
  * @format: string with format specification
  * @length: stores the count of characters displayed
  * @args: the values passed to _printf to be displayed
+ * Return: int
  *
- * Return: number of chars displayed
  *
- *
-*/
+ */
 int checkConversionspecifier(const char *format, int length, va_list args)
 {
 while (*format)
