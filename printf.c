@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "holberton.h"
-
 /**
  * _printf - function that duplicates the functionalities of printf
  * @format: string with format specification
@@ -16,35 +15,30 @@ int length = 0;
 char *printstr;
 char printchar;
 int printInteger;
-
 if (format == NULL)
 return (-1);
-
 va_start(args, format);
-while(*format)
+while (*format)
 {
-if(*format == '%')
+if (*format == '%')
 {
 format++;
-switch(*format)
+switch (*format)
 {
-case 'c': 
-printchar = va_arg(args, int);
-length += print_char(printchar);
+case 'c':
+length += print_char(va_arg(args, int));
 format++;
-break;              
-case 's': 
-printstr = va_arg(args, char*);
-length += print_str(printstr);
+break;
+case 's':
+length += print_str(va_arg(args, char*));
 format++;
 break;
 case 'i':
 case 'd':
-printInteger = va_arg(args, int);
-length += print_integer(printInteger);
+length += print_integer(va_arg(args, int));
 format++;
 break;
-case '%': 
+case '%':
 _putchar('%');
 format++;
 length++;
@@ -53,13 +47,13 @@ case ' ':
 format++;
 length++;
 break;
-case '\0': 
+case '\0':
 break;
 default:
 _putchar(*format);
-format++;            
-length +=2;
-}       
+format++;
+length += 2;
+}
 }
 else
 {
@@ -68,8 +62,6 @@ format++;
 length++;
 }
 }
-
 va_end(args);
-
 return (length);
 }
