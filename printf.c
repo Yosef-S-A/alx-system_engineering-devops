@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include "holberton.h"
+
 /**
  * _printf - function that duplicates the functionalities of printf
  * @format: string with format specification
@@ -11,10 +12,30 @@
 int _printf(const char *format, ...)
 {
 va_list args;
-int length = 0;
+int count = 0;
+char *printstr;
+char printchar;
+
 if (format == NULL)
 return (-1);
 va_start(args, format);
+count = checkConversionspecifier(format, count, args);
+va_end(args);
+return (count);
+}
+
+/**
+ * _printf - function that validates conversion specifiers
+ * @format: string with format specification
+ * @length: stores the count of characters displayed
+ * @args: the values passed to _printf to be displayed
+ *
+ * Return: number of chars displayed
+ *
+ *
+*/
+int checkConversionspecifier(const char *format, int length, va_list args)
+{
 while (*format)
 {
 if (*format == '%')
@@ -23,19 +44,6 @@ format++;
 switch (*format)
 {
 case 'c':
-<<<<<<< HEAD
-printchar = va_arg(args, int);
-length += print_char(printchar);
-format++;
-break;
-case 's':
-printstr = va_arg(args, char*);
-length += print_str(printstr);
-format++;
-break;
-case '%':
-putchar('%');
-=======
 length += print_char(va_arg(args, int));
 format++;
 break;
@@ -43,14 +51,8 @@ case 's':
 length += print_str(va_arg(args, char*));
 format++;
 break;
-case 'i':
-case 'd':
-length += print_integer(va_arg(args, int));
-format++;
-break;
 case '%':
 _putchar('%');
->>>>>>> e61fea009fb8c57029a5c2d8d7f9a9787072443a
 format++;
 length++;
 break;
@@ -61,6 +63,7 @@ break;
 case '\0':
 break;
 default:
+_putchar('%');
 _putchar(*format);
 format++;
 length += 2;
@@ -73,6 +76,5 @@ format++;
 length++;
 }
 }
-va_end(args);
 return (length);
 }
