@@ -21,25 +21,25 @@ if (format == NULL)
 return (-1);
 
 va_start(args, format);
-while(*format)
+while (*format)
 {
-if(*format == '%')
+if (*format == '%')
 {
 format++;
-switch(*format)
+switch (*format)
 {
-case 'c': 
+case 'c':
 printchar = va_arg(args, int);
 length += print_char(printchar);
 format++;
-break;              
-case 's': 
+break;
+case 's':
 printstr = va_arg(args, char*);
 length += print_str(printstr);
 format++;
 break;
-case '%': 
-_putchar('%');
+case '%':
+putchar('%');
 format++;
 length++;
 break;
@@ -47,13 +47,13 @@ case ' ':
 format++;
 length++;
 break;
-case '\0': 
+case '\0':
 break;
 default:
 _putchar(*format);
-format++;            
-length +=2;
-}       
+format++;
+length += 2;
+}
 }
 else
 {
