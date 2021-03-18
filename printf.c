@@ -12,9 +12,6 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int length = 0;
-char *printstr;
-char printchar;
-int printInteger;
 if (format == NULL)
 return (-1);
 va_start(args, format);
