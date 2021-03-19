@@ -10,27 +10,25 @@
  * @args: the values passed to _printf to be displayed
  *
  * Return: number of chars displayed
- *
- * 
- */
+*/
 int checkConversionspecifier(const char *format, int length, va_list args)
 {
-while(*format)
+while (*format)
 {
-if(*format == '%')
+if (*format == '%')
 {
 format++;
-switch(*format)
+switch (*format)
 {
-case 'c': 
+case 'c':
 length += print_char(va_arg(args, int));
-break;              
-case 's': 
+break;
+case 's':
 length += print_str(va_arg(args, char*));
 break;
 case 'i':
 case 'd':
-length+=print_integer(va_arg(args,int));
+length += print_integer(va_arg(args, int));
 break;
 case 'b':
 length += print_binary(va_arg(args, unsigned int));
@@ -39,33 +37,33 @@ case 'u':
 length += print_unsigned_int(va_arg(args, unsigned int));
 break;
 case 'o':
-length += print_octal (va_arg(args,unsigned int));
+length += print_octal(va_arg(args, unsigned int));
 break;
 case 'x':
-length += print_hex(printHexa, 0);
+length += print_hex(va_arg(args, unsigned int), 0);
 break;
 case 'X':
 length += print_hex(va_arg(args, unsigned int), 1);
 break;
 case 'r':
-length += print_reversed (va_arg(args, char *));
+length += print_reversed(va_arg(args, char *));
 break;
 case 'R':
-length += print_R (va_arg(args, char*));
-case '%': 
+length += print_R(va_arg(args, char*));
+case '%':
 _putchar('%');
 length++;
 break;
 case ' ':
 length++;
 break;
-case '\0': 
+case '\0':
 break;
 default:
 _putchar('%');
-_putchar(*format);           
-length +=2;
-}       
+_putchar(*format);
+length += 2;
+}
 }
 else
 {
@@ -85,15 +83,13 @@ return (length);
  */
 int _printf(const char *format, ...)
 {
-  va_list args;
-  int count = 0;
-  char *printstr;
-  char printchar;
+va_list args;
+int count = 0;
 
-  if (format == NULL)
-    return (-1);
-  va_start(args, format);
-  count = checkConversionspecifier(format, count, args);
-  va_end(args);
-  return (count);
+if (format == NULL)
+return (-1);
+va_start(args, format);
+count = checkConversionspecifier(format, count, args);
+va_end(args);
+return (count);
 }
