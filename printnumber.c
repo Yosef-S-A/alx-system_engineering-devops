@@ -1,39 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 #include "holberton.h"
 
 /**
- * print_integer - displays an integer
- * @n: integer to print
+ * _printf - function that duplicates the functionalities of printf
+ * @format: string with format specification
  *
- * Return: number of chars and digits printed
+ * Return: number of chars printed
  */
-int print_integer(int n)/*newly added*/
+int _printf(const char *format, ...)
 {
-int a[10];
-int j, m, sum, count;
+va_list args;
+int length = 0;
 
-count = 0;
-m = 1000000000;
-a[0] = n / m;
-for (j = 1; j < 10; j++)
+
+if (format == NULL)
+return (-1);
+va_start(args, format);
+while (*format)
 {
-m /= 10;
-a[j] = (n / m) % 10;
-}
-if (n < 0)
+if (*format == '%')
 {
-_putchar('-');
-count++;
-for (j = 0; j < 10; j++)
-a[j] *= -1;
-}
-for (j = 0, sum = 0; j < 10; j++)
+format++;
+switch (*format)
 {
-sum += a[j];
-if (sum != 0 || j == 9)
+case 'c':
+length += print_char(va_arg(args, int));
+break;
+case 's':
+  length += print_str(va_arg(args, char*));
+break;
+case 'i':
+case 'd':
+length += print_integer(va_arg(args, int));
+break;
+case 'b':
+length += print_binary(va_arg(args, unsigned int));
+break;
+case 'u':
+length += print_unsigned_int(va_arg(args, unsigned int));
+break;
+case 'o':
+length += print_octal(va_arg(args, unsigned int));
+break;
+case 'x':
+length += print_hex(va_arg(args, unsigned int), 0);
+break;
+case 'X':
+length += print_hex(va_arg(args, unsigned int), 1);
+break;
+case 'r':
+length += print_reversed(va_arg(args, char *));
+break;
+case 'R':
+length += print_R(va_arg(args, char*));
+break;
+case '%':
+_putchar('%');
+length++;
+break;
+case ' ':
+length++;
+break;
+case '\0':
+break;
+default:
+_putchar(*format);
+length += 2;
+}
+}
+else
 {
-_putchar('0' + a[j]);
-count++;
+_putchar(*format);
+length++;
 }
+format++;
 }
-return (count);
+va_end(args);
+return (length);
 }

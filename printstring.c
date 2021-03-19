@@ -10,8 +10,8 @@
  */
 int print_char(char ch)
 {
-  _putchar(ch);
-  return (1);
+_putchar(ch);
+return (1);
 }
 
 /**
@@ -23,6 +23,7 @@ int print_char(char ch)
 int print_str(char *s)
 {
 int count;
+  
 if (s == NULL)
 s = "(null)";
 for (count = 0; s[count]; count++)
@@ -43,8 +44,8 @@ int print_reversed(char *str)/*newly added*/
 int i, j, count = 0;
 
 for (i = 0; str[i]; i++)
-   ;
-for (j = i - 1; j >= 0; j--)
+;
+for (j = i-1; j >= 0; j--)
 {
 _putchar(str[j]);
 count++;

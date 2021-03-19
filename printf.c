@@ -30,34 +30,28 @@ length += print_str(va_arg(args, char*));
 break;
 case 'i':
 case 'd':
-length += print_integer(printInteger);
+length += print_integer(va_arg(args, int));
 break;
 case 'b':
-binaryNumber = va_arg(args, unsigned int);
-length += print_binary(binaryNumber);
+length += print_binary(va_arg(args, unsigned int));
 break;
 case 'u':
-printUnsignedInt = va_arg(args, unsigned int);
-length += print_unsigned_int (printUnsignedInt);
+length += print_unsigned_int (va_arg(args, unsigned int));
 break;
 case 'o':
-octalNumber = va_arg(args, unsigned int);
-length += print_octal(octalNumber);
+length += print_octal(va_arg(args, unsigned int));
 break;
 case 'x':
-printHexa = va_arg(args, unsigned int);
-length += print_hex(printHexa, 1);
+length += print_hex(va_arg(args, unsigned int), 0);
 break;
 case 'X':
-printHexa = va_arg(args, unsigned int);
-length += print_hex(printHexa, 1);
+length += print_hex(va_arg(args, unsigned int), 1);
 break;
-ase 'r' :
-printrevstr = va_arg(args, char *);
+case 'r' :
+length += print_reversed(va_arg(args, char *));
 break;
 case 'R':
-rot13ed = va_arg(args, char*);
-length += print_R(rot13ed);
+length += print_R(va_arg(args, char*));
 break;
 case '%':
 _putchar('%');
