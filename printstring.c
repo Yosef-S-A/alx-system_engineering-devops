@@ -10,8 +10,8 @@
  */
 int print_char(char ch)
 {
-_putchar(ch);
-return (1);
+  _putchar(ch);
+  return (1);
 }
 
 /**
@@ -22,15 +22,15 @@ return (1);
  */
 int print_str(char *s)
 {
-int count;
+  int count;
   
-if (s == NULL)
-s = "(null)";
-for (count = 0; s[count]; count++)
-{
-_putchar(s[count]);
-}
-return (count);
+  if (s == NULL)
+    s = "(null)";
+  for (count = 0; s[count]; count++)
+    {
+      _putchar(s[count]);
+    }
+  return (count);
 }
 
 /**
@@ -41,16 +41,16 @@ return (count);
  */
 int print_reversed(char *str)/*newly added*/
 {
-int i, j, count = 0;
+  int i, j, count = 0;
 
-for (i = 0; str[i]; i++)
-;
-for (j = i-1; j >= 0; j--)
-{
-_putchar(str[j]);
-count++;
-}
-return (count);
+  for (i = 0; str[i]; i++)
+    ;
+  for (j = i-1; j >= 0; j--)
+    {
+      _putchar(str[j]);
+      count++;
+    }
+  return (count);
 }
 
 /**
@@ -61,27 +61,27 @@ return (count);
  */
 int print_R(char *str)/*newly added*/
 {
-unsigned int i, j;
-int count = 0;
-char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+  unsigned int i, j;
+  int count = 0;
+  char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
-for (i = 0; str[i]; i++)
-{
-for (j = 0; in[j]; j++)
-{
-if (in[j] == str[i])
-{
-_putchar(rot13[j]);
-count++;
-break;
-}
-}
-if (!in[j])
-{
-_putchar(str[i]);
-count++;
-}
-}
-return (count);
+  for (i = 0; str[i]; i++)
+    {
+      for (j = 0; in[j]; j++)
+	{
+	  if (in[j] == str[i])
+	    {
+	      _putchar(rot13[j]);
+	      count++;
+	      break;
+	    }
+	}
+      if (!in[j])
+	{
+	  _putchar(str[i]);
+	  count++;
+	}
+    }
+  return (count);
 }
