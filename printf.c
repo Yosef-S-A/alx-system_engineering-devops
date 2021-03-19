@@ -20,21 +20,16 @@ if (*format == '%')
 format++;
 switch (*format)
 {
+case '\0':
+_putchar('%');
+length++;
+return (length);
+break;
 case 'c':
 length += print_char(va_arg(args, int));
 break;
 case 's':
 length += print_str(va_arg(args, char*));
-break;
-case 'i':
-case 'd':  
-length += print_integer(va_arg(args, int));
-break;
-case 'r':
-length += print_reversed(va_arg(args, char *));
-break;
-case 'R':
-length += print_R(va_arg(args, char*));
 break;
 case '%':
 _putchar('%');
@@ -43,11 +38,9 @@ break;
 case ' ':
 length++;
 break;
-case '\0':
-break;
 default:
-_putchar ('%');
-_putchar (*format);
+_putchar('%');
+putchar(*format);
 length += 2;
 }
 }
