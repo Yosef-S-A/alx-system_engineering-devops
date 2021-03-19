@@ -25,7 +25,7 @@ int print_str(char *s)
 int count;
   
 if (s == NULL)
-s = "";
+s = "(null)";
 for (count = 0; s[count]; count++)
 {
 _putchar(s[count]);
