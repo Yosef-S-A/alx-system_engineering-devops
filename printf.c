@@ -27,6 +27,10 @@ break;
 case 's':
 length += print_str(va_arg(args, char*));
 break;
+case 'i':
+case 'd':  
+length += print_integer(va_arg(args, int));
+break;
 case '%':
 _putchar('%');
 length++;
