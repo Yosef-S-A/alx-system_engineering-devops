@@ -30,6 +30,11 @@ case 'i':
 case 'd':  
 length += print_integer(va_arg(args, int));
 break;
+case 'r':
+length += print_reversed(va_arg(args, char *));
+break;
+case 'R':
+length += print_R(va_arg(args, char*));
 case '%':
 _putchar('%');
 length++;
