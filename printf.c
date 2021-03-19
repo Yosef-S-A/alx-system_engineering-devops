@@ -31,6 +31,29 @@ break;
 case 's':
 length += print_str(va_arg(args, char*));
 break;
+case 'i':
+case 'd':
+length += print_integer(va_arg(args, int));
+case 'b':
+length += print_binary(va_arg(args, unsigned int));
+case 'u':
+length += print_unsigned_int(va_arg(args, unsigned int));
+break;
+case 'o':
+length += print_octal(va_arg(args, unsigned int));
+break;
+case 'x':
+length += print_hex(va_arg(args, unsigned int), 0);
+break;
+case 'X':
+length += print_hex(va_arg(args, unsigned int), 1);
+break;
+case 'r':
+length += print_reversed(va_arg(args, char *));
+break;
+case 'R':
+  length += print_R(va_arg(args, char*));
+break;
 case '%':
 _putchar('%');
 length++;
