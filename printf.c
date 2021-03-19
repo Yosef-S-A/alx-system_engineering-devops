@@ -62,8 +62,6 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int count = 0;
-char *printstr;
-char printchar;
 
 if (format == NULL)
 return (-1);

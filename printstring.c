@@ -23,7 +23,7 @@ return (1);
 int print_str(char *s)
 {
 int count;
-  
+
 if (s == NULL)
 s = "(null)";
 for (count = 0; s[count]; count++)
@@ -32,8 +32,6 @@ _putchar(s[count]);
 }
 return (count);
 }
-<<<<<<< HEAD
-=======
 
 /**
  * print_reverse - displays a string reversed
@@ -41,13 +39,13 @@ return (count);
  *
  * Return: number of chars printed
  */
-int print_reversed(char *str)/*newly added*/
+int print_reversed(char *str)
 {
 int i, j, count = 0;
 
 for (i = 0; str[i]; i++)
 ;
-for (j = i-1; j >= 0; j--)
+for (j = i - 1; j >= 0; j--)
 {
 _putchar(str[j]);
 count++;
@@ -87,4 +85,3 @@ count++;
 }
 return (count);
 }
->>>>>>> 87a15c3cb181bfea4df9dff7cee8787e0e98fdd1
