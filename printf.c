@@ -30,6 +30,8 @@ case 'i':
 case 'd':  
 length += print_integer(va_arg(args, int));
 break;
+case 'b':
+length += print_binary(va_arg(args, unsigned int));
 case 'r':
 length += print_reversed(va_arg(args, char *));
 break;

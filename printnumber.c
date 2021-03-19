@@ -37,3 +37,29 @@ int print_integer(int n)/*newly added*/
     }
   return (count);
 }
+
+/**
+ * print_binary - takes an unsigned int and displays it in binary notation
+ * @n: unsigned int to print
+ *
+ * Return: number of digits displayed
+ */
+int print_binary(unsigned int n)/*newly added*/
+{
+int count;
+int i = 0;    
+int binaryNum[32]; 
+  
+while (n > 0) 
+    { 
+      binaryNum[i] = n % 2; 
+      n = n / 2; 
+      i++; 
+    }   
+  for (i = i-1; i >= 0; i--)    
+    {   
+      _putchar('0'+binaryNum[i]);
+      count++; 
+    }    
+  return (count);
+}
