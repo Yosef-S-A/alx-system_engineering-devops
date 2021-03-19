@@ -9,16 +9,16 @@
  * @length: stores the count of characters displayed
  * @args: the values passed to _printf to be displayed
  *
- * Return: number of chars displayed
-*/
+ * Return: number of chars displayed 
+ */
 int checkConversionspecifier(const char *format, int length, va_list args)
 {
-while (*format)
+while(*format)
 {
-if (*format == '%')
+if(*format == '%')
 {
 format++;
-switch (*format)
+switch(*format)
 {
 case 'c':
 length += print_char(va_arg(args, int));
@@ -26,30 +26,6 @@ break;
 case 's':
 length += print_str(va_arg(args, char*));
 break;
-case 'i':
-case 'd':
-length += print_integer(va_arg(args, int));
-break;
-case 'b':
-length += print_binary(va_arg(args, unsigned int));
-break;
-case 'u':
-length += print_unsigned_int(va_arg(args, unsigned int));
-break;
-case 'o':
-length += print_octal(va_arg(args, unsigned int));
-break;
-case 'x':
-length += print_hex(va_arg(args, unsigned int), 0);
-break;
-case 'X':
-length += print_hex(va_arg(args, unsigned int), 1);
-break;
-case 'r':
-length += print_reversed(va_arg(args, char *));
-break;
-case 'R':
-length += print_R(va_arg(args, char*));
 case '%':
 _putchar('%');
 length++;
@@ -62,7 +38,7 @@ break;
 default:
 _putchar('%');
 _putchar(*format);
-length += 2;
+length +=2;
 }
 }
 else
