@@ -4,13 +4,12 @@
 #include "holberton.h"
 
 /**
- * checkConversionspecifier - function that compares values with
- * predifiened values
+ * checkConversionspecifier - function that validates conversion specifiers
  * @format: string with format specification
  * @length: stores the count of characters displayed
  * @args: the values passed to _printf to be displayed
- * Return: int
  *
+ * Return: number of chars displayed
  *
  */
 int checkConversionspecifier(const char *format, int length, va_list args)
@@ -28,37 +27,6 @@ break;
 case 's':
 length += print_str(va_arg(args, char*));
 break;
-case 'i':
-case 'd':
-length += print_integer(printInteger);
-break;
-case 'b':
-binaryNumber = va_arg(args, unsigned int);
-length += print_binary(binaryNumber);
-break;
-case 'u':
-printUnsignedInt = va_arg(args, unsigned int);
-length += print_unsigned_int (printUnsignedInt);
-break;
-case 'o':
-octalNumber = va_arg(args, unsigned int);
-length += print_octal(octalNumber);
-break;
-case 'x':
-printHexa = va_arg(args, unsigned int);
-length += print_hex(printHexa, 1);
-break;
-case 'X':
-printHexa = va_arg(args, unsigned int);
-length += print_hex(printHexa, 1);
-break;
-ase 'r' :
-printrevstr = va_arg(args, char *);
-break;
-case 'R':
-rot13ed = va_arg(args, char*);
-length += print_R(rot13ed);
-break;
 case '%':
 _putchar('%');
 length++;
@@ -70,7 +38,7 @@ case '\0':
 break;
 default:
 _putchar ('%');
-_putchar(*format);
+_putchar (*format);
 length += 2;
 }
 }
@@ -94,6 +62,8 @@ int _printf(const char *format, ...)
 {
 va_list args;
 int count = 0;
+char *printstr;
+char printchar;
 
 if (format == NULL)
 return (-1);
@@ -102,4 +72,3 @@ count = checkConversionspecifier(format, count, args);
 va_end(args);
 return (count);
 }
-

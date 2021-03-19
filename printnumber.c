@@ -1,41 +1,79 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
 #include "holberton.h"
 
 /**
- * print_integer - displays an integer
- * @n: integer to print
+ * _printf - function that duplicates the functionalities of printf
+ * @format: string with format specification
  *
- * Return: number of chars and digits printed
+ * Return: number of chars printed
  */
+<<<<<<< HEAD
 int print_integer(int n)
+=======
+int _printf(const char *format, ...)
+>>>>>>> 87a15c3cb181bfea4df9dff7cee8787e0e98fdd1
 {
-int a[10];
-int j, m, sum, count;
+va_list args;
+int length = 0;
+char *printstr;
+char printchar;
+int printInteger;
 
-count = 0;
-m = 1000000000;
-a[0] = n / m;
-for (j = 1; j < 10; j++)
+if (format == NULL)
+return (-1);
+
+va_start(args, format);
+while(*format)
 {
-m /= 10;
-a[j] = (n / m) % 10;
-}
-if (n < 0)
+if(*format == '%')
 {
-_putchar('-');
-count++;
-for (j = 0; j < 10; j++)
-a[j] *= -1;
-}
-for (j = 0, sum = 0; j < 10; j++)
+format++;
+switch(*format)
 {
-sum += a[j];
-if (sum != 0 || j == 9)
+case 'c': 
+printchar = va_arg(args, int);
+length += print_char(printchar);
+format++;
+break;              
+case 's': 
+printstr = va_arg(args, char*);
+length += print_str(printstr);
+format++;
+break;        
+case 'i':
+case 'd':
+printInteger = va_arg(args, int);
+length += print_integer(printInteger);
+format++;
+break;
+case '%': 
+_putchar('%');
+format++;
+length++;
+break;
+case ' ':
+format++;
+length++;
+break;
+case '\0': 
+break;
+default:
+_putchar(*format);
+format++;            
+length +=2;
+}       
+}
+else
 {
-_putchar('0' + a[j]);
-count++;
+_putchar(*format);
+format++;
+length++;
 }
 }
-return (count);
+va_end(args);
+return (length);
 }
 
 /**
