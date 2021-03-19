@@ -19,7 +19,13 @@ int print_integer(int n)/*newly added*/
       m /= 10;
       a[j] = (n / m) % 10;
     }
-
+  if (n < 0)
+    {
+      _putchar('-');
+      count++;
+      for (j = 0; j < 10; j++)
+	a[j] *= -1;
+    }
   for (j = 0, sum = 0; j < 10; j++)
     {
       sum += a[j];
