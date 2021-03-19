@@ -10,7 +10,6 @@
  * @args: the values passed to _printf to be displayed
  *
  * Return: number of chars displayed
- *
  */
 int checkConversionspecifier(const char *format, int length, va_list args)
 {
