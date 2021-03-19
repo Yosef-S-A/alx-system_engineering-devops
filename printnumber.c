@@ -6,7 +6,7 @@
  *
  * Return: number of chars and digits printed
  */
-int print_integer(int n)/*newly added*/
+int print_integer(int n)
 {
 int a[10];
 int j, m, sum, count;
