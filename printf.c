@@ -4,60 +4,41 @@
 #include "holberton.h"
 
 /**
- * _printf - function that validates conversion specifiers
+ * checkConversionspecifier - function that validates conversion specifiers
  * @format: string with format specification
  * @length: stores the count of characters displayed
  * @args: the values passed to _printf to be displayed
  *
- * Return: number of chars displayed 
+ * Return: number of chars displayed
+ *
+ * 
  */
-int checkConversionspecifier(const char *format, int length, va_list args)
+int checkConversionspecifier(const char *format, unsigned int *length, va_list args)
 {
-while(*format)
+unsigned int i;
+print_t p[] = {
+{"c", print_char},
+{"s", print_str},
+{"i", print_integer},
+{"d", print_integer},
+{"u", print_unsigned_int},
+{"b", print_binary},
+{"o", print_octal},
+{"x", print_hex},
+{"X", print_heX},
+{"r", print_reversed}, /*newly added*/
+{"R", print_R}, /*newly added*/
+{NULL, NULL}
+};
+for (i = 0; p[i].t != NULL; i++)
 {
-if(*format == '%')
+if (*(p[i].t) == *format)
 {
-format++;
-switch(*format)
-{
-case 'c':
-length += print_char(va_arg(args, int));
-break;
-case 's':
-length += print_str(va_arg(args, char*));
-break;
-case 'i':
-case 'd':  
-length += print_integer(va_arg(args, int));
-break;
-case 'r':
-length += print_reversed(va_arg(args, char *));
-break;
-case 'R':
-length += print_R(va_arg(args, char*));
-case '%':
-_putchar('%');
-length++;
-break;
-case ' ':
-length++;
-break;
-case '\0':
-break;
-default:
-_putchar('%');
-_putchar(*format);
-length +=2;
+*length += p[i].f(args);
+return (1);
 }
 }
-else
-{
-_putchar(*format);
-length++;
-}
-format++;
-}
-return (length);
+return (0);
 }
 
 /**
@@ -69,12 +50,36 @@ return (length);
 int _printf(const char *format, ...)
 {
 va_list args;
-int count = 0;
+unsigned int count = 0, i = 0;
 
 if (format == NULL)
 return (-1);
 va_start(args, format);
-count = checkConversionspecifier(format, count, args);
+while(format[i])
+{
+for (; format[i] != '%' && format[i]; i++)
+{
+_putchar(format[i]);
+count++;
+}
+if (!format[i])
+return (count);
+if (checkConversionspecifier(&format[i + 1], &count, args))
+{
+i += 2;
+continue;
+}
+if (format[i + 1] == '%')
+{
+_putchar(format[i]);
+count++;
+i += 2;
+continue;
+}
+count++;
+_putchar(format[i]);
+i++;
+}
 va_end(args);
 return (count);
 }
