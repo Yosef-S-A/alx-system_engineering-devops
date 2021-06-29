@@ -1,0 +1,9 @@
+[user]
+	name = Yosef-S-A
+	email = yosefsamuel22@gmail.com
+[core]
+	editor = emacs
+[init]
+	default = branch
+[push]
+	default = simple
