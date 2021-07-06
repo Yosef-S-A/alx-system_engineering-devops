@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 _printf
 _printf is a customized implementation of the C function printf. 
 
@@ -40,3 +41,6 @@ Authors
 Abebayehu samuel | absa3852@gmail.com
 
 Yosef Samuel | yosefsamue22@gmail.com
+=======
+# alx-system_engineering-devops
+>>>>>>> eea159d7f56010a407422b60e5e634801465c499
