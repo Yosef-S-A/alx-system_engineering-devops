@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+sudo netstat -plnt
+
+sudo netstat -lp
