@@ -4,7 +4,7 @@ In this project, I became familiar connecting to and working with servers using 
 
 ## Tasks :clipboard:
 
-:zero: **Use a private key**
+:zero: **[Use a private key](https://github.com/Yosef-S-A/alx-system_engineering-devops/blob/main/0x0B-ssh/0-use_a_private_key)**
        - Bash script that uses `ssh` to connect to the school provided server.
 
 :one: **Create an SSH key pair**
@@ -13,3 +13,5 @@ In this project, I became familiar connecting to and working with servers using 
 :two: **Client configuration file**
       - SSH configuration file configured to use the private key `~/.ssh/holberton and to refuse authenication using a password.
 
+:four: **Client configuration file** 
+       - Making changes to SSH configuration file using Puppet. The ssh_config file is configured to use private key and refuse password authentication.
