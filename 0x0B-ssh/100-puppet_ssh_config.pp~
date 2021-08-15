@@ -1,0 +1,5 @@
+# client configuration file with puppet
+
+file {'/etc/ssh/ssh_config':
+     ensure => 'file',
+     
