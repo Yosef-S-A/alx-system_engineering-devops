@@ -4,5 +4,5 @@ This is the first in a series of Webstack debugging series. In this debugging se
 
 ## Task :clipboard:
 
-:zero: Give me a page!\n
-       - [0-give_me_a_page](): A bash script that runs an Apache on the container and return a paage containing Hello Holberton when quering the root of it.
+:zero: Give me a page!
++ [0-give_me_a_page](): A bash script that runs an Apache on the container and return a paage containing Hello Holberton when quering the root of it.
