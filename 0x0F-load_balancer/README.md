@@ -1,6 +1,6 @@
 # 0x0F-load_balancer
 
-In this project, I continued to build up the configuration of the web server issued in project[0x0C](https://github.com/Yosef-S-A/alx-system_engineering-devops/tree/main/0x0C-web_server). Additional two serers were given to me to configure one server as webserver similar to the previous project and on the third to set up an HAproxy load balancer on to manage both web servers.
+In this project, I continued to build up the configuration of the web server issued in project [0x0C](https://github.com/Yosef-S-A/alx-system_engineering-devops/tree/main/0x0C-web_server). Additional two serers were given to me to configure one server as webserver similar to the previous project and on the third to set up an HAproxy load balancer on to manage both web servers.
 
 Tasks :clipboard:
 
