@@ -8,14 +8,7 @@ package { 'nginx':
   require => Exec['apt-get-update'],
 }
 
-file_line { 'a':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'listen 80 default_server;',
-  require => Package['nginx'],
-}
-
-file_line { 'b':
+file_line { 'addHeader':
   ensure  => 'present',
   path    => '/etc/nginx/sites-available/default',
   after   => 'listen 80 default_server;',
