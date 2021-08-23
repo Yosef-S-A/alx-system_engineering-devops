@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Install nginx and and make it return a page with a string 'Holberton School'
+
+apt-get update
+apt-get -y install nginx
+
+mkdir -p /var/www/html
+touch /var/www/html/index.html
+echo "Holberton School" > /var/www/html/index.html
+
+printf %s "server {
+       listen 80 default_server;
+       listen [::]:80 default_server;
+       add_header X-Served-By $HOSTNAME;
+       root /var/www/html;
+       index index.html index.htm;
+}
+" > /etc/nginx/sites-available/default
+
+service nginx restart
